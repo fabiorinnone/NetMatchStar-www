@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="NetMatch*: an enhanced Cytoscape network querying app">
+    <meta name="author" content="Fabio Rinnone">
+    <link rel="icon" href="img/favicon.gif">
+
+    <title>NetMatch*</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/lavish-bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <style type="text/css">
+		.pageContainer section {
+			padding-top: 40px;
+		}
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target="#navbar" data-offset="40">
+     <!-- Fixed navbar -->
+     <div class="navbar navbar-inverse navbar-fixed-top">
+     <section id="home">
+	    <div class="container">
+	      <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">NetMatch*</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#download">Download</a></li>
+              <li><a href="#references">References</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manual <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#installation">Installation</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Usage</li>
+                  <li><a href="#options">Options</a></li>
+                  <li><a href="#loading">Loading input data</a></li>
+                  <li><a href="#drawing">Drawing query</a></li>
+                  <li><a href="#motifs">Motifs library</a></li>
+                  <li><a href="#results">Managing results</a></li>
+                  <li><a href="#significance">Significance</a></li>  
+                  <li class="divider"></li>
+                  <li><a href="#bugs">Bugs report</a></li>
+                </ul>
+              </li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+        </div>
+		</div>
+   
+	<div class="container">
+	   <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+	     <h2><big>NetMatch*</big></h2>
+        <!--<p><img width="800" src="img/netmatchlogo.png"></img></p>-->
+        <p>An enhanced Cytoscape network querying app</p>
+        <p><small>NetMatch* is a Cytoscape app that allow user to find all the occurrences of a query graph in a network 
+			and check for its significance as a motif with respect to seven different random models. The query can be 
+			uploaded or built from scratch using Cytoscape facilities. NetMatch* also allows queries with wildcards.</small></p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="#download" role="button">Download »</a>
+        </p>
+      </div>
+
+		<div class="pageContainer">
+			<section id="download">
+				<h2>Download</h2>
+				<big>
+				<p>Before downloading, be sure to have <a href="http://www.cytoscape.org/index.html" target="_blank">Cytoscape 3.x</a> 
+				and <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java</a> installed. Source codes 
+				are available on <a href="https://github.com/fabiorinnone/NetMatchStar" target="_blank">GitHub</a>. See the <a href=#installation>installation</a> section of manual for 
+				installation howto.</p>
+				<p><a class="btn btn-lg btn-primary" href="./files/netmatchstar-3.2.jar">
+				Download NetMatch* 3.2</a>
+				<a class="btn btn-lg btn-primary" target="_blank" href="http://apps.cytoscape.org/apps/netmatchstar">
+				Download from App Store</a></p>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="references">
+				<h2>References</h2>
+				<p>Rinnone F, Micale G, Bonnici V et al. NetMatchStar: an enhanced Cytoscape network 
+				querying app [version 2; referees: 2 approved] <i>F1000Research</i> 2015, 
+				<b>4</b>:479 (doi: <a href="https://dx.doi.org/10.12688/f1000research.6656.2" target="_blank">
+				10.12688/f1000research.6656.2</a>).</p>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="introduction">
+				<h2>Introduction</h2>
+				<p>Biological networks such as protein-protein interaction, transcription regulatory, 
+    			gene regulatory, and metabolic networks  are often referred to as complex systems. 
+    			The term complex relates to the existence of non-trivial substructures contained 
+    			within them. The study of complex systems involves the analysis of the way in which 
+    			their elements interact rather than only their individual roles. Computationally, 
+    			such a study entails the ability to query networks to find specific patterns of interactions.
+				</p>
+				<p>Possible queries might include the identification of positive and negative autoregulation, 
+				coherent and incoherent feed forward loops, single-input modules and dense overlapping 
+				regulons in a given target network <i>N</i>. Sub-networks that occur surprisingly often 
+				in a network may be preferred by evolution. For that reason, NetMatch* offers the 
+				ability to compute a p-value against seven random null models and suggests the one 
+				that shares the network properties of <i>N</i> in terms of degree distribution, cluster 
+				coefficient and assortativity.</p>
+				<center><p><img width="800" src="img/netmatch.png"/></p></center>
+				<center><p><small>NetMatch* 3.1</small></p></center>
+				<br/>
+				<p>NetMatch* works on Cytoscape (3.2.1) and is based on 
+				the NetMatch software. It deals with both exact queries and approximate ones, in which wildcards 
+				are used to match unspecified number of elements.</p>
+				<p>NetMatch* integrates the RI algorithm proposed for biological real networks which outperforms 
+				other existing algorithms, whose efficiency is mainly due to the choice of a search strategy, 
+				i.e. the ordering with which query nodes are mapped. For example, a variable ordering may 
+				begin with a query node having the highest degree or having the most uncommon label in the 
+				target graph. The variable ordering of RI is based only on the query graph topology. Roughly, 
+				the chosen order creates constraints as early as possible in the matching phase. The nodes 
+				having high valence and that are highly connected with nodes previously present in the ordering 
+				tend to come early in the variable-ordering. The aim of RI is to avoid costly pruning techniques 
+				by finding a static search strategy such that the number of constraints that are verifiable from 
+				a partial solution are maximized.</p>
+				<p>NetMatch* also supports approximate querying. Approximate queries are graphs with unspecified 
+				structures. They may contain nodes and edges which can match any value of node or edge labels in 
+				the network and approximate paths constrained in length to be less than or greater than <i>m</i>, 
+				where <i>m</i> is a positive integer. NetMatch* first matches all the specified subparts of the 
+				queries exactly and then joins the matches by network traversal. The network traversal phase 
+				checks that all traversed paths satisfy the query path constraints.</p>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="installation">
+				<h2>Installation</h2>
+				<p> Open the "App Manager" from "Apps" menu in Cytoscape and select "Install From File...".</p>
+				<center><p><img width="800" src="img/install1.png"/></p></center>
+				<center><p><small>Cytoscape App Manager</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/install2.png"/></p></center>
+				<center><p><small>Install NetMatch* from file</small></p></center>
+				<br/>
+				<p> After a few seconds NetMatch* will be installed as app in Cytoscape.</p>
+				<center><p><img width="800" src="img/install3.png"/></p></center>
+				<center><p><small>NetMatch* successfully installed</small></p></center>	
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="options">
+				<h2>Options</h2>
+				<p>The main frame of NetMatch* contains three tabbed panels:
+				<ul>
+				<li>"Matching" panel, to specify the target and the query graphs and run the matching task;</li>
+				<li>"Significance" panel, for the statistical significance of the query as a motif according to 
+				a specific random model;</li> 
+				<li>"Motif library" panel, which contains a set of predefined queries for the matching task.</li>
+				</ul>
+				<center>
+				<table cellpadding="10">
+				<tbody>
+					<tr>
+						<td><center><p><img width="300" src="img/matchingPanel.png"/></p></center></td>
+						<td>&nbsp;&nbsp;&nbsp;</td>
+						<td><center><p><img width="300" src="img/significancePanel.png"/></p></center></td>
+						<td>&nbsp;&nbsp;&nbsp;</td>
+						<td><center><p><img width="300" src="img/libraryPanel.png"/></p></center></td>
+					</tr>
+						<td><center><p><small>Matching panel</small></p></center></td>
+						<td>&nbsp;&nbsp;&nbsp;</td>
+						<td><center><p><small>Significance panel</small></p></center></td>
+						<td>&nbsp;&nbsp;&nbsp;</td>
+						<td><center><p><small>Motifs library panel</small></p></center></td>				
+					<tr>
+					</tr>
+				</tbody>				
+				</table>
+				</center>				
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="loading">
+				<h2>Loading input data</h2>
+				<p>Query and network graphs can be uploaded in NetMatch*, by clicking on the 
+				folder icon at the toolbar of "Matching" panel. Each uploaded network will be 
+				added to the Network list of Cytoscape. In the drop-down lists of "Network Properties" 
+				and "Query Properties" section, the user can select one of the uploaded networks as a 
+				query or target network for the matching and statistical significance tasks. Likewise, 
+				the user may upload node and edge labels as Cytoscape attributes and link them to the 
+				nodes and edges of the target network and query graph.</p>
+				<center><p><img width="800" src="img/targetNetwork.png"/></p></center>
+				<center><p><small>Target network</small></p></center>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="drawing">
+				<h2>Drawing query</h2>
+				<p>To create a new query, the user must click on the "plus" icon of "Matching panel". 
+				A new panel for the creation of a new network will be opened. A right click on the panel will 
+				open the standard Cytoscape menu to add, edit or remove elements of the graph. Such a menu also 
+				includes the "NetMatch*" menu item, which let the user change the label of a node or edge 
+				and set a path between two nodes.  By default, newly added nodes and edges will be labeled with 
+				the wildcard "?", meaning that the label of the element is unspecified. Any other character will 
+				be associated to a specific label. Paths between two nodes <i>i</i> and <i>j</i> are defined as 
+				special attributes for the edge <i>(i,j)</i>. The length of a path is specified by an expression 
+				of the form <i>a op b</i>, where <i>a</i> and <i>b</i> are two integers (or the wildcard "?") 
+				and <i>op</i> is one of <i><,<=,>=,>,=</i>. The "?" character is used to leave the minimum or 
+				maximum length of the path unspecified. For instance, the expression <i>"? <= 2 "</i> means that 
+				the corresponding path must have at most length 2, while <i>"? > 3"</i> corresponds to a path of 
+				length greater than 3. A query with a "?" character in at least a node and/or edge is an 
+				approximate query for NetMatch*.
+				</p>
+				<p>By clicking on "Save" button on panel, the user can store the query graph created from 
+				scratch on disk as text files in a customized .SIF format with nodes and edges attribute 
+				files with extensions respectively .NA and .EA.</p>
+				<center><p><img width="800" src="img/drawing1.png"/></p></center>
+				<center><p><small>Create new query from scratch</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing2.png"/></p></center>
+				<center><p><small>Add new node to query</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing3.png"/></p></center>
+				<center><p><small>Add new edge to query</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing4.png"/></p></center>
+				<center><p><small>Edit node label attribute</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing5.png"/></p></center>
+				<center><p><small>Query node unlabeled</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing6.png"/></p></center>
+				<center><p><small>Query node labeled</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing7.png"/></p></center>
+				<center><p><small>Query edge context menu</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing8.png"/></p></center>
+				<center><p><small>Edit edge label attribute</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing9.png"/></p></center>
+				<center><p><small>Set approximate path</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/drawing10.png"/></p></center>
+				<center><p><small>An approximate query</small></p></center>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="motifs">
+				<h2>Motifs library</h2>
+				<p>The pre-defined set of queries includes small topologies which have been identified as 
+				motifs in many real networks, such as feed-forward loops, diamonds, single-input modules 
+				and dense overlapping regulons. Pre-defined queries can be selected from the "Motifs library" 
+				tabbed panel. By clicking on one of these topologies, the user can visualize the query 
+				and modify it, as previously described, i.e. adding new nodes/edges, changing node/edge 
+				labels and setting paths between nodes. 
+				</p>
+				<center><p><img width="800" src="img/motifs1.png"/></p></center>
+				<center><p><small>Set of pre-defined motifs</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/motifs2.png"/></p></center>
+				<center><p><small>Bi-parallel motif</small></p></center>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="results">
+				<h2>Managing results</h2>
+				<p>Once a target network and a query has been provided in the "Matching" panel, 
+				the user can either look for all occurrences of the query within the input graph 
+				or check if the query. The user must click on the "Match" button in the "Matching" 
+				panel. Optionally user can select preferred matching algotithm from two options: 
+				RI or RI-DS. Once the matching task has been completed, a table with all the occurrences 
+				of the query in the target will be shown as a tabbed panel in the "Result Panel" 
+				of Cytoscape and the input graph will be visualized. For each occurrence, NetMatch*
+				reports its nodes and an image depicting its topology. By selecting a row in the 
+				table, the user can visualize the corresponding occurrence in the target network. 
+				If the option "Create a new child network" is disabled, nodes of the occurrence 
+				will be highlighted in yellow within the input network, otherwise the occurrence 
+				will be visualized in a separate window. By clicking on "Save" button on result 
+				panel, the user can store the results as text file. 
+				</p>
+				<center><p><img width="800" src="img/results2.png"/></p></center>
+				<center><p><small>Select Target Network</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/results3.png"/></p></center>
+				<center><p><small>Select Target Network Node Attributes</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/results4.png"/></p></center>
+				<center><p><small>Select Target Network Edge Attributes</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/matching.png"/></p></center>
+				<center><p><small>Matching</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/results5.png"/></p></center>
+				<center><p><small>Matches founded</small></p></center>
+				<br/>				
+				<center><p><img width="800" src="img/results6.png"/></p></center>
+				<center><p><small>Select a match</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/results7.png"/></p></center>
+				<center><p><small>Select a match as a new child network</small></p></center>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="significance">
+				<h2>Significance</h2>
+				<p>The "Significance" panel contains all the parameters for the evaluation of the statistical 
+				significance of a motif subnetwork. It consists of eight subpanels, one for each random model 
+				and one for the general settings of all models. In the top subpanel the user can choose the 
+				number of random graphs to generate for the statistical test (between 0 and 100) and compute 
+				a set of metrics for the input graph and sample random graphs, one for each model. Metrics 
+				include the average degree, the average clustering coefficient and the assortativity index. 
+				At the end of the computation, the resulting values are shown in a separate window. Values 
+				of these metrics can suggest to the user which random model best describes the features of 
+				the input network should be used. 
+				</p>
+				<p>The other subpanels let the user choose the parameters of each random model. In the 
+				"Shuffling model" panel, "sw/edg" denotes the number of successful swaps per edges. 
+				The "Erdos-Renyi" panel has no parameters. In the "Watts-Strogatz" panel, "Rew prob" 
+				is the probability of rewiring <i>beta</i>. The "Barabasi-Albert" panel defines "Init nodes", 
+				the number of initial nodes in the complete seed network. The "Duplication Model" panel has 
+				two parameters: "Init nodes", the number of nodes in the initial seed network, and "Edg prob", 
+				the edge duplication probability. In the "Geometric Model" panel, parameter "dim" denotes 
+				the dimension of the space where points are placed. Finally, the "Forest-Fire model" panel 
+				contains parameter "Ambass num", that is the number of ambassadors nodes. For each model, 
+				all the remaining parameters are estimated based on the number of nodes and edges of the target network. 
+				</p>
+				<p>To check if a query is a motif, the user must click on one of the "Start" buttons of the 
+				"Significance" panel, depending on the random model that has been chosen to perform the 
+				significance test. When the simulation ends, a window will appear with the following measures: 
+				the number of query occurrences in the real network, the mean and the standard deviation of 
+				the number of query occurrences in the random networks, the P-value and the Z-score.
+				</p>
+				<center><p><img width="800" src="img/significance1.png"/></p></center>
+				<center><p><small>"Significance" panel options</small></p></center>
+				<br/>
+				<center><p><img width="800" src="img/significance2.png"/></p></center>
+				<center><p><small>Compute metrics</small></p></center>
+				<br/>				
+				<center><p><img width="800" src="img/seed.png"/></p></center>
+				<center><p><small>Set a random seed</small></p></center>
+				<br/>				
+				<center><p><img width="800" src="img/verification.png"/></p></center>
+				<center><p><small>Verification</small></p></center>
+				<br/>				
+				<center><p><img width="800" src="img/significance3.png"/></p></center>
+				<center><p><small>"Significance" results</small></p></center>
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="bugs">
+				<h2>Bugs report</h2>
+				<p>
+				For any bugs report, please send an email to:
+				<a href="mailto:giugno@dmi.unict.it?subject=NetMatchStar 3.1 bug report&cc=fabio.rinnone0@gmail.com">
+				giugno@dmi.unict.it</a>.</p>
+				</p>		
+			</section>
+		</div>
+
+		<div class="pageContainer">
+			<section id="about">
+				<h2>About</h2>
+				<p>NetMatch* is developed by:</p>
+				<p><b>Fabio Rinnone</b>, <b>Giovanni Micale</b><br/>
+				Department of Maths and Computer Science<br/>
+				University of Catania, Catania, 95125, Italy</p>
+				<p><b>Vincenzo Bonnici</b><br/>
+				Department of Computer Science<br/>
+				University of Verona, Verona, 37134, Italy</p>
+				<p><b>Gary D. Bader</b><br/>
+				The Donnelly Centre<br/>
+				University of Toronto, Toronto, Ontario M5S 3E1, Canada</p>
+				<p><b>Dennis Shasha</b><br/>
+				Department of Computer Science<br/>
+				Courant Institute of Mathematical Science<br/>
+				New York University, New York, NY 10012, U.S.A.</p>
+				<p><b>Alfredo Ferro</b>, <b>Alfredo Pulvirenti</b>, <b>Rosalba Giugno</b><br/>
+				Department of Clinical and Experimental Medicine<br/>
+				University of Catania, Catania, 95125, Italy</p>
+				<p>NetMatch* is released under Apache License Version 2.0. See the following <a 
+				href="https://www.apache.org/licenses/LICENSE-2.0">link</a> for further details.</p>
+			</section>
+		</div>
+
+    </div> <!-- /container -->
+
+	 <div class="staticFooter text-center">
+		  <hr>
+		  <footer>
+			  <div class="container">
+				<div class="span6">
+					<small>
+						<img src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="CC BY-NC-SA"><br>
+						Except where otherwise noted, this website and all its content is licensed under 
+						a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.
+					</small>
+				</div>
+				<div class="span6">
+					<small>
+						Website developed by <a href="http://www.fabiorinnone.eu" target="_blank">Fabio Rinnone</a>. 
+						Powered by <a href="https://getbootstrap.com/">Bootstrap 3.3.4</a>.
+					</small>
+				</div>
+			  </div>	  
+		  </footer>
+		</div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html>
